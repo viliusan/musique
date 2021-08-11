@@ -1,0 +1,82 @@
+@font-face {
+  font-family: "MonteCarlo";
+  src: local("MonteCarlo"),
+    url(./fonts/MonteCarlo-Regular.ttf) format("truetype");
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+@font-face {
+  font-family: "STIXTwoText";
+  src: local("STIXTwoText"),
+    url(./fonts/STIXTwoText-Regular.ttf) format("truetype");
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                                                      'embedded-opentype', and 'svg' */
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #fff;
+  font-family: STIXTwoText;
+}
+
+/* Nav  */
+
+.navbar {
+  margin-bottom: 1rem;
+}
+
+.navbar a {
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: rgba(255, 255, 255, 0.947);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbar-brand > h1 {
+  color: #fff;
+  display: inline-block;
+  margin-bottom: 2px;
+  margin-left: 200px;
+  border-radius: 2px;
+  font-family: MonteCarlo;
+  text-decoration: none;
+}
+
+ul.nav.navbar-nav li {
+  margin: 0 0.5rem;
+}
+
+.onboarding > .navbar {
+  background-color: #ffb70e;
+  background-size: 100% 100%;
+}
+
+.home-hero {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+  text-align: center;
+  padding: 1rem;
+  background-position: center center;
+  color: #000;
+}
+
+.btn-primary {
+  background-color: #ffb70e !important;
+  border: none;
+}
