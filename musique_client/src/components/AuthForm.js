@@ -17,13 +17,26 @@ class AuthForm extends Component {
     });
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const authType = this.props.signUp ? "signup" : "signin";
+    this.props
+      .onAuth(authType, this.state)
+      .then(() => {
+        console.log("LOGGED IN!");
+      })
+      .catch(() => {
+        return;
+      });
+  };
+
   render() {
     const { email, username, password, profileImageUrl } = this.state;
     const { heading, buttonText, signUp } = this.props;
     return (
       <div>
-        <div class="row justify-content-md-center text-center">
-          <div class="col-md-6">
+        <div className="row justify-content-md-center text-center">
+          <div className="col-md-6">
             <form onSubmit={this.handleSubmit}>
               <h2>{heading}</h2>
               <label htmlFor="email">Email:</label>
@@ -65,6 +78,12 @@ class AuthForm extends Component {
                   />
                 </div>
               )}
+              <button
+                type="submit"
+                className="btn btn-primary btn-block btn-lg"
+              >
+                {buttonText}
+              </button>
             </form>
           </div>
         </div>
