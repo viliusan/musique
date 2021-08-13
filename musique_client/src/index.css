@@ -80,3 +80,28 @@ ul.nav.navbar-nav li {
   background-color: #ffb70e !important;
   border: none;
 }
+
+.listFilesRap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: scroll;
+  margin-bottom: 100px;
+}
+
+.listFilesPop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: scroll;
+}
+
+.greeting {
+  margin-bottom: 5rem;
+}
+
+.profile-picture {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}

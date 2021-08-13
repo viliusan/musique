@@ -1,21 +1,56 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { fetchApi } from "../services/fetchData";
+import DataCard from "./DataCard";
 
 const Homepage = ({ currentUser }) => {
-  if (!currentUser.isAuthenticated) {
-    return (
-      <div className="home-hero">
-        <h1>What are you listening to?</h1>
-        <h4>New to Musique?</h4>
-        <Link to="/signup" className="btn btn-primary">
-          Sign up here
-        </Link>
-      </div>
-    );
-  }
+  const [topRapAlbums, setTopRapAlbums] = useState([]);
+  const [topPopAlbums, setTopPopAlbums] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      await fetchApi("rap").then((res) => setTopRapAlbums(res));
+      await fetchApi("pop").then((res) => setTopPopAlbums(res));
+    }
+    fetchData();
+  }, []);
+
+  if (!topRapAlbums?.data?.albums.album.length) return null;
+  if (!topPopAlbums?.data?.albums.album.length) return null;
+
   return (
     <div>
-      <h1>YOU ARE LOGGED IN! XD</h1>
+      <div className="greeting">
+        <h2>Welcome, {currentUser.user.username}</h2>
+      </div>
+      <div className="rap-heading">
+        <h3>Top rap albums today</h3>
+      </div>
+      <div className="listFilesRap">
+        {topRapAlbums.data.albums.album.map((album, index) => (
+          <DataCard
+            className="card"
+            image={album.image[3]["#text"]}
+            name={album.name}
+            artist={album.artist.name}
+            key={index}
+          />
+        ))}
+      </div>
+      <div className="pop-heading">
+        <h3>Top pop albums today</h3>
+      </div>
+      <div className="listFilesPop">
+        {topPopAlbums.data.albums.album.map((album, index) => (
+          <DataCard
+            className="card"
+            image={album.image[3]["#text"]}
+            name={album.name}
+            artist={album.artist.name}
+            key={index}
+          />
+        ))}
+      </div>
     </div>
   );
 };

@@ -24,6 +24,11 @@ class Navbar extends Component {
                   Log Out
                 </Link>
               </li>
+              <img
+                className="profile-picture"
+                src={this.props.currentUser.user.profileImageUrl}
+                alt="User profile"
+              />
             </ul>
           ) : (
             <ul className="nav navbar-nav navbar-right">

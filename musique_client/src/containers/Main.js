@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Router, withRouter, Redirect, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import Homepage from "../components/Homepage";
+import Homepage from "../components/LandingPage";
 import AuthForm from "../components/AuthForm";
 import { authUser } from "../store/actions/auth";
 import { removeError } from "../store/actions/errors";
